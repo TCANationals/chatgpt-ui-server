@@ -1,26 +1,35 @@
 import logging
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
+
+from .managers import CustomUserManager
 
 logger = logging.getLogger(__name__)
 
 
+class CustomUser(AbstractUser):
+
+    objects = CustomUserManager()
+
+    def __str__(self):
+        return self.username
+
 class EmbeddingDocument(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     faiss_store = models.BinaryField(null=True)
     title = models.CharField(max_length=255, default="")
     created_at = models.DateTimeField(auto_now_add=True)
 
 
 class Conversation(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     topic = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
 
 
 class Message(models.Model):
     conversation = models.ForeignKey(Conversation, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     message = models.TextField()
     messages = models.TextField(default='')
     tokens = models.IntegerField(default=0)
@@ -47,7 +56,7 @@ class Message(models.Model):
 
 
 class Prompt(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     title = models.TextField(null=True, blank=True)
     prompt = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)

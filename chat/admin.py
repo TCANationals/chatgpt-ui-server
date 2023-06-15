@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Conversation, Message, Setting
+from .models import Conversation, Message, Setting, CustomUser
 
 
 @admin.register(Conversation)
@@ -21,3 +21,8 @@ class MessageAdmin(admin.ModelAdmin):
 @admin.register(Setting)
 class SettingAdmin(admin.ModelAdmin):
     list_display = ('name', 'value')
+
+
+@admin.register(CustomUser)
+class CustomUserAdmin(admin.ModelAdmin):
+    list_display = ('email',)

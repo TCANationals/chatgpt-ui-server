@@ -19,6 +19,8 @@ dj-rest-auth = "~=3.0.0"
 requests = "~=2.27.1"
 beautifulsoup4 = "~=4.12.0"
 django-simpleui = "*"
+drf-jwt = "~=1.19.2"
+django-cognito-jwt = "~=0.0.4"
 
 [dev-packages]
 mysql-connector-python = "~=8.0.32"
