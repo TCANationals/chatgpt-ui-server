@@ -1,8 +1,9 @@
-from django.contrib.auth.base_user import BaseUserManager
+from django.contrib.auth.models import UserManager as AbstractUserManager
+
 from django.utils.translation import gettext_lazy as _
 
 
-class CustomUserManager(BaseUserManager):
+class CustomUserManager(AbstractUserManager):
 
     def get_or_create_for_cognito(self, jwt_token):
         if not jwt_token['email']:
