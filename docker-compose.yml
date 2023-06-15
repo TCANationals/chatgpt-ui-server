@@ -30,4 +30,4 @@ services:
 
 networks:
   chatgpt-ui_network:
-    driver: bridge
+    driver: host
