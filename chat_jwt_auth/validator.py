@@ -20,14 +20,15 @@ class TokenValidator:
 
     @cached_property
     def pool_url(self):
-        return "https://cognito-idp.%s.amazonaws.com/%s" % (
-            self.aws_region,
-            self.aws_user_pool,
-        )
+        # return "https://cognito-idp.%s.amazonaws.com/%s" % (
+        #     self.aws_region,
+        #     self.aws_user_pool,
+        # )
+        return 'https://mikeai.cloudflareaccess.com'
 
     @cached_property
     def _json_web_keys(self):
-        response = requests.get(self.pool_url + "/.well-known/jwks.json")
+        response = requests.get(self.pool_url + "/cdn-cgi/access/certs")
         response.raise_for_status()
         json_data = response.json()
         return {item["kid"]: json.dumps(item) for item in json_data["keys"]}

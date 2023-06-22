@@ -30,8 +30,9 @@ COGNITO_USER_POOL = 'us-east-1_uDAIkJd2y'
 
 # Provide this value if `id_token` is used for authentication (it contains 'aud' claim).
 # `access_token` doesn't have it, in this case keep the COGNITO_AUDIENCE empty
-COGNITO_AUDIENCE = '5ddfkn0v3fsb80keniulioo44i'
-COGNITO_POOL_URL = None
+#COGNITO_AUDIENCE = '5ddfkn0v3fsb80keniulioo44i'
+COGNITO_AUDIENCE = 'fe2ed7dbb0aa59105dd46fcc3da10f7b3f9eca6a07bca285e4aaf73ee3b491fa' #cfzero
+COGNITO_POOL_URL = 'https://mikeai.cloudflareaccess.com' #cfzero
 
 COGNITO_PUBLIC_KEYS_CACHING_ENABLED = True
 COGNITO_PUBLIC_KEYS_CACHING_TIMEOUT = 60*60*24  # 24h caching, default is 300s
