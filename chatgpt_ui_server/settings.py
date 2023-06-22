@@ -94,7 +94,7 @@ INSTALLED_APPS = [
     'chat.apps.ChatConfig',
     'stats.apps.StatsConfig',
     'provider.apps.ProviderConfig',
-    'django_cognito_jwt',
+    'chat_jwt_auth',
 ]
 
 MIDDLEWARE = [
@@ -193,7 +193,7 @@ REST_FRAMEWORK = {
         # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
         # 'rest_framework_simplejwt.authentication.JWTAuthentication'
         #'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
-        'django_cognito_jwt.JSONWebTokenAuthentication'
+        'chat_jwt_auth.JSONWebTokenAuthentication'
     ]
 }
 
